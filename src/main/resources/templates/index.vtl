@@ -1,20 +1,19 @@
-<h1>Task list!</h1>
+<h1>Welcome to the To Do List Application</h1>
+<ol>
+  <li>
+  <a href="/tasks/new">Add a new task</a>
+  </li>
+  <li>
+  <a href="/tasks">View all current tasks</a>
+  </li>
+</ol>
 
-#if ($tasks)
-  <ul>
-    #foreach ($task in $tasks)
-      <li>$task.getDescription()</li>
-    #end
-  </ul>
-#else
-  <p>No tasks!</p>
-#end
-
-<p>Add a new Task:</p>
-
-<form action="/tasks" method="post">
-  <label for="description">Task Description</label>
-  <input id="description" name="description" type="text">
-
-  <button type="submit" class="btn btn-default">Add task</button>
-</form>
+<h1>Todo list!</h1>
+<ol>
+  <li>
+  <a href="/categories">View Category List</a>
+  </li>
+  <li>
+  <a href="/categories/new">Add a New Category</a>
+  </li>
+<ol>
