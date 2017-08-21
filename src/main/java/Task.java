@@ -3,18 +3,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Task {
-  private String mDescription;
-  private boolean mCompleted;
-  private LocalDateTime mCreatedAt;
-  private static List<Task> instances = new ArrayList<Task>();
-  private int mId;
+  private String description;
+  private boolean completed;
+  private LocalDateTime createdAt;
+  private int id;
 
   public Task(String description) {
-    mDescription = description;
-    mCompleted = false;
-    mCreatedAt = LocalDateTime.now();
-    instances.add(this);
-    mId = instances.size();
+    this.description = description;
+    completed = false;
+    createdAt = LocalDateTime.now();
+    //instances.add(this);
+    //mId = instances.size();
   }
 
   public String getDescription(){
