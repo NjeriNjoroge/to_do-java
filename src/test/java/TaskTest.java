@@ -43,6 +43,7 @@ public void clear_emptiesAllTasksFromArrayList_0() {
   assertEquals(Task.all().size(), 0);
 }
 
+//assign and access IDs
 @Test
 public void getId_tasksInstantiateWithAnID_1() {
   Task.clear();  // Remember, the test will fail without this line! We need to empty leftover Tasks from previous tests!
@@ -50,6 +51,7 @@ public void getId_tasksInstantiateWithAnID_1() {
   assertEquals(1, myTask.getId());
 }
 
+//locating specific Tasks using their unique ID
 @Test
 public void find_returnsTaskWithSameId_secondTask() {
   Task firstTask = new Task("Mow the lawn");
