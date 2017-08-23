@@ -100,6 +100,25 @@ public void save_savesCategoryIdIntoDB_true() {
   assertEquals(savedTask.getCategoryId(), myCategory.getId());
 }
 
+//updating a specific task in database
+@Test
+public void update_updatesTaskDescription_true() {
+  Task myTask = new Task("Mow the lawn", 1);
+  myTask.save();
+  myTask.update("Take a nap");
+  assertEquals("Take a nap", Task.find(myTask.getId()).getDescription());
+}
+
+//locating and deleting task from database
+@Test
+public void delete_deletesTask_true() {
+  Task myTask = new Task("Mow the lawn", 1);
+  myTask.save();
+  int myTaskId = myTask.getId();
+  myTask.delete();
+  assertEquals(null, Task.find(myTaskId));
+}
+
 
 //clearing database i.e the tasks and categories created
   @After

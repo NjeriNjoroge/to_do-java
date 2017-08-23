@@ -44,18 +44,6 @@ public class Task {
       }
     }
 
- @Override
-  public boolean equals(Object otherTask){
-    if (!(otherTask instanceof Task)) {
-      return false;
-    } else {
-      Task newTask = (Task) otherTask;
-      return this.getDescription().equals(newTask.getDescription()) &&
-             this.getId() == newTask.getId() &&
-             this.getCategoryId() == newTask.getCategoryId();
-    }
-  }
-
  public void save() {
    try(Connection con = DB.sql2o.open()) {
      String sql = "INSERT INTO tasks(description, categoryId) VALUES (:description, :categoryId)";
@@ -76,5 +64,38 @@ public class Task {
   return task;
 }
 }
+
+//updating specific tasks in database
+public void update(String description) {
+  try(Connection con = DB.sql2o.open()) {
+    String sql = "UPDATE tasks SET description = :description WHERE id = :id";
+    con.createQuery(sql)
+      .addParameter("description", description)
+      .addParameter("id", id)
+      .executeUpdate();
+  }
+}
+
+//locating and deleting task from database
+public void delete() {
+  try(Connection con = DB.sql2o.open()) {
+  String sql = "DELETE FROM tasks WHERE id = :id;";
+  con.createQuery(sql)
+    .addParameter("id", id)
+    .executeUpdate();
+  }
+}
+
+ @Override
+  public boolean equals(Object otherTask){
+    if (!(otherTask instanceof Task)) {
+      return false;
+    } else {
+      Task newTask = (Task) otherTask;
+      return this.getDescription().equals(newTask.getDescription()) &&
+             this.getId() == newTask.getId() &&
+             this.getCategoryId() == newTask.getCategoryId();
+    }
+  }
 
 }
